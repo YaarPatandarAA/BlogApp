@@ -54,38 +54,37 @@ app.post("/blogs", function (req, res) {
 });
 
 // SHOW ROUTE
-app.get("/blogs/:id", function(req, res){
-    Blog.findById(req.params.id, function(err, foundBlog){
-        if(err){
+app.get("/blogs/:id", function (req, res) {
+    Blog.findById(req.params.id, function (err, foundBlog) {
+        if (err) {
             res.redirect("/blogs");
         } else {
-            res.render("show", {blog: foundBlog});
+            res.render("show", { blog: foundBlog });
         }
     })
- });
+});
 
- // EDIT ROUTE
-app.get("/blogs/:id/edit", function(req, res){
-    Blog.findById(req.params.id, function(err, foundBlog){
-        if(err){
+// EDIT ROUTE
+app.get("/blogs/:id/edit", function (req, res) {
+    Blog.findById(req.params.id, function (err, foundBlog) {
+        if (err) {
             res.redirect("/blogs");
         } else {
-            res.render("edit", {blog: foundBlog});
+            res.render("edit", { blog: foundBlog });
         }
     });
 })
 
-
 // UPDATE ROUTE
-app.put("/blogs/:id", function(req, res){
+app.put("/blogs/:id", function (req, res) {
     req.body.blog.body = req.sanitize(req.body.blog.body)
-   Blog.findByIdAndUpdate(req.params.id, req.body.blog, function(err, updatedBlog){
-      if(err){
-          res.redirect("/blogs");
-      }  else {
-          res.redirect("/blogs/" + req.params.id);
-      }
-   });
+    Blog.findByIdAndUpdate(req.params.id, req.body.blog, function (err, updatedBlog) {
+        if (err) {
+            res.redirect("/blogs");
+        } else {
+            res.redirect("/blogs/" + req.params.id);
+        }
+    });
 });
 
 app.listen(3000, function () {
