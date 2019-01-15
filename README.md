@@ -1,7 +1,7 @@
 # BlogApp
 RESTful Blog App, simple blog following REST architectural style.
 
-### Finished Webpage
+### Finished Webpage - [View live site](https://blogapp-amarjitsingh.herokuapp.com/)
 ![](finalPage.gif)
 
 ### How to Use - Installation
