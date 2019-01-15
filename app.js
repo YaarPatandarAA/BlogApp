@@ -6,7 +6,9 @@ var bodyParser = require("body-parser"),
     app = express();
 
 // APP CONFIG
-mongoose.connect('mongodb://localhost:27017/restful_blog_app', { useNewUrlParser: true });
+// mongoose.connect('mongodb://localhost:27017/restful_blog_app', { useNewUrlParser: true });
+mongoose.connect("mongodb://user:user123@ds119489.mlab.com:19489/blogdemo", { useNewUrlParser: true });
+
 app.set("view engine", "ejs");
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -105,6 +107,6 @@ app.delete("/blogs/:id", function (req, res) {
     //redirect somewhere
 });
 
-app.listen(3000, function () {
+app.listen(process.env.PORT || 3000, function () {
     console.log("SERVER IS RUNNING!");
 })
